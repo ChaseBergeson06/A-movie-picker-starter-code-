@@ -1,0 +1,64 @@
+public class MyProgram extends ConsoleProgram
+{
+    String[] moiveList = { "The Snowman", "The Perfect Storm", "Lamborghini", "Patriots Day", " A Good Person"};
+    int currentIndex = 0;
+
+    public void run()
+    {
+        System.out.println("Welcome to my moive pick list!\n");
+        System.out.println("Current pick : " + moiveList[currentIndex]);
+
+        while (true)
+        {
+            String input = readLine("(N)ext, (P)revius, (A)dd, (R)emove, or (E)xit: ");
+            System.out.println();
+
+            if (input.equalsIgnoreCase("N"))
+            {
+                currentIndex++;
+                if (currentIndex >= moiveList.length)
+                {
+                    currentIndex = 0;
+                }
+                System.out.println("Current item: " + moiveList[currentIndex] + "\n");
+            }
+            else if (input.equalsIgnoreCase("P"))
+            {
+                currentIndex--;
+                if (currentIndex < 0)
+                {
+                    currentIndex = moiveList.length - 1;
+                }
+                System.out.println("Current item: " + moiveList[currentIndex] + "\n");
+            }
+            else if (input.equalsIgnoreCase("A"))
+            {
+                int movieList = readInt ("enter the new moive: ");
+                printList();
+
+            }
+            else if (input.equalsIgnoreCase("R"))
+            {
+                int movieList = readInt("what moive do you want to remove: ");
+            }
+            else if (input.equalsIgnoreCase("E"))
+            {
+                break;
+            }
+            else
+            {
+                System.out.println("Invalid option. Try again.\n");
+            }
+        }
+    }
+
+    public void printList()
+    {
+        System.out.println("moive List:");
+        for (int i = 0; i < moiveList.length; i++)
+        {
+            System.out.println((i + 1) + ": " + moiveList[i]);
+        }
+        System.out.println();
+    }
+}
